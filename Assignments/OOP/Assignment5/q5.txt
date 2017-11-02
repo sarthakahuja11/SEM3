@@ -1,0 +1,25 @@
+pg 795 Complete reference
+
+An anonymous class is a class that is not assigned a name. Goal of the required program below is to display the string "Mouse Pressed
+in the status bar of the applet viewer or browser when the mouse is pressed.
+
+import java.awt.applet.*;
+import java.awt.event.*;
+/* <applet code="AnonymousInnerClassDemo" width=200 height=100> </applet> */
+
+public class AnonymousInnerClassDemo extends Applet{
+public void init(){
+addMouseListener(new MouseAdapter() {
+public void mousePressed(MouseEvent me){
+showStatus("Mouse Pressed");
+}
+});
+}
+}
+
+The syntax new MouseAdapter() indiactes to the compiler that the code between braces defines an anonymous inner class. Furthermore
+that class extends MouseAdapter. This new class is not named but is automatically instantiated when this expression is executed.
+Because this anonymous inner class is defined within the scope of AnonymousInnerClassDemo it has access to all of variables and methods 
+within the scope of the class. Therefore it can call showStatus directly.
+
+It allows us to create more efficient code.

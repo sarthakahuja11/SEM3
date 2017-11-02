@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+/* A linked list node */
+typedef struct node
+{
+    int data;
+    struct node *next;
+}*NODE;
+
+NODE push(NODE first,int val)
+{
+   NODE temp=(struct node *) malloc(sizeof(struct node));
+
+    temp->data=val;
+    temp->next=NULL;
+
+    if(first==NULL)
+    {
+        return temp;
+    }
+    else
+    {
+        NODE cur=first;
+        while(cur->next!=NULL)
+            cur=cur->next;
+        cur->next=temp;
+        return first;
+    }
+}
+
+/* Function to print nodes in a given linked list */
+void printList(NODE first)
+{
+    if(first==NULL)
+        printf("\n\n\n\n empty");
+    else
+    while(first != NULL)
+    {
+        printf("%d ", first->data);
+        first = first->next;
+    }
+}
+NODE del(NODE first)
+{
+    if(first==NULL)
+        return first;
+    else
+    {
+        first=first->next;
+        del(first);
+    }
+}
+int main()
+{
+    NODE  a= NULL;
+
+     a=push(a, 1);
+     a=push(a, 2);
+     a=push(a, 3);
+     a=push(a, 4);
+     a=push(a, 5);
+     a=push(a, 6);
+     a=push(a, 7);
+     a=push(a, 8);
+     a=push(a, 9);
+     printList(a);
+     a=del(a);
+     printf("\n\n\n");
+     printList(a);
+
+}

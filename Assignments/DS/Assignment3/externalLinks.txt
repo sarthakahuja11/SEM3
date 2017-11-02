@@ -1,0 +1,6 @@
+2A) http://www.geeksforgeeks.org/swap-nodes-in-a-linked-list-without-swapping-data/
+2B)http://www.geeksforgeeks.org/in-place-merge-two-linked-list-without-changing-links-of-first-list/
+3A)http://www.geeksforgeeks.org/delete-alternate-nodes-of-a-linked-list/
+3B)https://www.cs.bu.edu/teaching/c/linked-list/delete/
+
+4B)http://www.cs.bu.edu/fac/snyder/cs112/CourseMaterials/LinkedListNotes.html

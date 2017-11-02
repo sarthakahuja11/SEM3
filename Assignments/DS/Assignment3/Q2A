@@ -1,0 +1,116 @@
+/* This program swaps the nodes of linked list rather
+   than swapping the field from the nodes.*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+/* A linked list node */
+typedef struct node
+{
+    int data;
+    struct node *next;
+}*NODE;
+
+/* Function to swap nodes x and y in linked list by
+   changing links */
+void swapNodes(NODE *head_ref, int x, int y)
+{
+   // Nothing to do if x and y are same
+   if (x == y) return;
+
+   // Search for x (keep track of prevX and CurrX
+   NODE prevX = NULL, currX = *head_ref;
+   while (currX && currX->data != x)
+   {
+       prevX = currX;
+       currX = currX->next;
+   }
+
+   // Search for y (keep track of prevY and CurrY
+   NODE prevY = NULL, currY = *head_ref;
+   while (currY && currY->data != y)
+   {
+       prevY = currY;
+       currY = currY->next;
+   }
+
+   // If either x or y is not present, nothing to do
+   if (currX == NULL || currY == NULL)
+       return;
+
+   // If x is not head of linked list
+   if (prevX != NULL)
+       prevX->next = currY;
+   else // Else make y as new head
+       *head_ref = currY;
+
+   // If y is not head of linked list
+   if (prevY != NULL)
+       prevY->next = currX;
+   else  // Else make x as new head
+       *head_ref = currX;
+
+   // Swap next pointers
+   NODE temp = currY->next;
+   currY->next = currX->next;
+   currX->next  = temp;
+}
+
+/* Function to add a node at the begining of List */
+NODE push(NODE first,int val)
+{
+   NODE temp=(struct node *) malloc(sizeof(struct node));
+
+    temp->data=val;
+    temp->next=NULL;
+
+    if(first==NULL)
+    {
+        return temp;
+    }
+    else
+    {
+        NODE cur=first;
+        while(cur->next!=NULL)
+            cur=cur->next;
+        cur->next=temp;
+        return first;
+    }
+}
+
+/* Function to print nodes in a given linked list */
+void printList(NODE first)
+{
+    while(first != NULL)
+    {
+        printf("%d ", first->data);
+        first = first->next;
+    }
+}
+
+/* Driver program to test above function */
+int main()
+{
+    NODE start = NULL;
+
+    /* The constructed linked list is:
+     1->2->3->4->5->6->7 */
+    start=push(start, 7);
+    start=push(start, 6);
+    start=push(start, 5);
+    start=push(start, 4);
+   start= push(start, 3);
+    start=push(start, 2);
+    start=push(start, 1);
+    printList(start);
+
+    printf("\n Linked list before calling swapNodes() ");
+    printList(start);
+
+    swapNodes(&start, 7, 4);
+
+    printf("\n Linked list after calling swapNodes() ");
+    printList(start);
+
+    return 0;
+}

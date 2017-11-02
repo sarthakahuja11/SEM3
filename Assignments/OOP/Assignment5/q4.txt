@@ -1,0 +1,11 @@
+An applet must use multithreading if it needs to run continually because applets are event-driven programs 
+which must not enter a “mode” of operation. 
+For example, if start( ) never returns, then paint( ) will never be called.
+
+Besides, having any time consuming processes on the Event Dispatching Thread can make the applet unresponsive.
+
+Use q3-> the digital watch program to explain. 
+
+
+Links:
+https://www.cs.bham.ac.uk/~szh/teaching/ssc/lecturenotes/Concurrency/Lecture5_MultithreadedSwing.pdf
